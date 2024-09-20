@@ -2,12 +2,14 @@
     "logFilePath": "C:\\Administration\\script_log.txt",
     "pcNameMapping": {
         "BJCAM": { "Client": "BoilerJuice", "Site": "Cambridge" },
-        "ILUXCAM-LT59": { "Client": "ILUX", "Site": "Cambridge" }
+        "ILUXCAM": { "Client": "ILUX", "Site": "Cambridge" },
+        "B*-L*": { "Client": "CPEM", "Site": "London" },
+        "ANDREWS": { "Client": "Andrew", "Site": "Cambridge" }
     },
-    "softwarePaths": {
-        "chrome": ".\\Functions\\Programs\\install_chrome.ps1",
-        "adobeReader": ".\\Functions\\Programs\\install_adobe_reader.ps1",
-        "office365": ".\\Functions\\Programs\\install_office365.ps1",
-        "supportAgent": ".\\Functions\\Programs\\install_support_agent.ps1"
+    "ProgramPaths": {
+        "chrome": ".\\Functions\\Programs\\Install-Chrome.ps1",
+        "adobeReader": ".\\Functions\\Programs\\Install-AdobeReader.ps1",
+        "office365": ".\\Functions\\Programs\\Install-Office.ps1",
+        "supportAgent": ".\\Functions\\Programs\\Install-SupportAgent.ps1"
     }
 }

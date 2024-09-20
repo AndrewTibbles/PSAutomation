@@ -1,8 +1,8 @@
 # Define a nested hashtable to store client site agents and installation flags
 $clientSiteList = @{
-    "Client1" = @{
-        "Site1" = @{
-            "Agent" = "$PSScriptRoot\Agents\Client1\Site1\Agent.exe"
+    "Andrew" = @{
+        "Cambridge" = @{
+            "Agent" = "$PSScriptRoot\Agents\Andrew\Cambridge\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
