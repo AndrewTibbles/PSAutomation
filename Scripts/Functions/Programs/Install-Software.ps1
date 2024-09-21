@@ -75,14 +75,17 @@ function Install-Software {
     }
 
     # Get the agent path from clientList.ps1
-    $agentPath = $siteInfo.Agent
-    $message = "Installing Agent for $client $site"
+    $agentDirectory = [System.IO.Path]::GetDirectoryName($siteInfo.Agent)
+    $agentPath = Get-ChildItem -Path $agentDirectory -Filter "*agent*.exe" | Select-Object -First 1
+    
+    $relativeAgentPath = $agentPath.FullName.Replace($parentFolder, ".")
+    $message = "Installing Agent for $client $site from $relativeAgentPath"
     Write-Output $message
     Log-Message -message $message -logFilePath $logFilePath
 
-    if (Test-Path $agentPath) {
+    if ($agentPath) {
         try {
-            Start-Process $agentPath -ArgumentList "/silent /install" -Wait
+            Start-Process $agentPath.FullName -ArgumentList "/silent /install" -Wait
             Log-Message -message "Agent installation completed for $client $site" -logFilePath $logFilePath
         }
         catch {
@@ -90,6 +93,7 @@ function Install-Software {
         }
     }
     else {
-        Log-Message -message "Agent executable not found at $agentPath." -logFilePath $logFilePath
+        Log-Message -message "Agent executable not found in $agentDirectory." -logFilePath $logFilePath
     }
+
 }

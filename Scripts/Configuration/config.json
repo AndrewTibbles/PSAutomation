@@ -1,0 +1,16 @@
+{
+    "logFilePath": "C:\\Administration\\script_log.txt",
+    "pcNameMapping": {
+        "BJCAM": { "Client": "BoilerJuice", "Site": "Cambridge" },
+        "ILUXCAM": { "Client": "ILUX", "Site": "Cambridge" },
+        "B*-L*": { "Client": "CPEM", "Site": "London" },
+        "ANDREWS": { "Client": "Andrew", "Site": "Cambridge" }
+    },
+    "ProgramPaths": {
+        "chrome": ".\\Scripts\\Functions\\Programs\\Install-Chrome.ps1",
+        "adobeReader": ".\\Scripts\\Functions\\Programs\\Install-AdobeReader.ps1",
+        "office365": ".\\Scripts\\Functions\\Programs\\Install-Office.ps1",
+        "slack": ".\\Scripts\\Functions\\Programs\\Install-Slack.ps1",
+        "supportAgent": ".\\Scripts\\Functions\\Programs\\Install-SupportAgent.ps1"
+    }
+}

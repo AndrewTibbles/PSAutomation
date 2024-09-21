@@ -1,5 +1,6 @@
 # Get the parent directory of the script's location
-$parentFolder = Split-Path -Path $PSScriptRoot -Parent
+$findparentFolder = Split-Path -Path $PSScriptRoot -Parent
+$parentFolder = Split-Path -Path $findparentFolder -Parent
 
 # Define a nested hashtable to store client site agents and installation flags
 $clientSiteList = @{
