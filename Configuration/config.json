@@ -10,6 +10,7 @@
         "chrome": ".\\Functions\\Programs\\Install-Chrome.ps1",
         "adobeReader": ".\\Functions\\Programs\\Install-AdobeReader.ps1",
         "office365": ".\\Functions\\Programs\\Install-Office.ps1",
+        "slack": ".\\Functions\\Programs\\Install-Slack.ps1",
         "supportAgent": ".\\Functions\\Programs\\Install-SupportAgent.ps1"
     }
 }

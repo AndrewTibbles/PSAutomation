@@ -1,5 +1,5 @@
 # Configures power options including sleep values, screen timeout values, CPU cooling policy, and disables Fastboot.
-Write-Host "`nPreparing to configure power options."
+Write-Host "Preparing to configure power options."
 
 # Set Sleep values
 Write-Host "Setting Sleep values..."

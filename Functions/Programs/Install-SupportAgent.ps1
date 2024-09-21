@@ -18,14 +18,14 @@ function Is-DirectoryExists {
 # Function to install support agent based on OEM or CPU
 function Install-SupportAgent {
     # Check the machine manufacturer
-    Add-Content -Path $logFilePath -Value "`nGathering system information..."
+    Add-Content -Path $logFilePath -Value "Gathering system information..."
     $OEM = Get-ItemPropertyValue HKLM:\HARDWARE\DESCRIPTION\System\BIOS -Name SystemManufacturer
     Add-Content -Path $logFilePath -Value "Machine manufacturer: $OEM"
 
     # Check the CPU manufacturer
     Add-Content -Path $logFilePath -Value "Checking CPU manufacturer..."
     $CPU = Get-WmiObject Win32_Processor | Select-Object -ExpandProperty Manufacturer
-    Add-Content -Path $logFilePath -Value "CPU manufacturer: $CPU`n"
+    Add-Content -Path $logFilePath -Value "CPU manufacturer: $CPU"
 
     switch ($OEM) {
         "Dell Inc." {
@@ -75,7 +75,7 @@ function Install-SupportAgent {
         "Lenovo" {
             # Install Lenovo System Update
             if (-not (Is-DirectoryExists "C:\Program Files (x86)\Lenovo\System Update")) {
-                Add-Content -Path $logFilePath -Value "`nStarting installation of Lenovo System Update..."
+                Add-Content -Path $logFilePath -Value "Starting installation of Lenovo System Update..."
                 $Path = $env:TEMP
                 $Installer = "SystemUpdate.exe"
                 $URL = "https://download.lenovo.com/pccbbs/thinkvantage_en/systemupdate5.07.0074.exe"
@@ -99,7 +99,7 @@ function Install-SupportAgent {
             if ($CPU -eq "GenuineIntel") {
                 # Install Intel Support Assistant
                 if (-not (Is-DirectoryExists "C:\Program Files (x86)\Intel\Intel(R) Driver and Support Assistant")) {
-                    Add-Content -Path $logFilePath -Value "`nStarting installation of Intel Support Assistant..."
+                    Add-Content -Path $logFilePath -Value "Starting installation of Intel Support Assistant..."
                     $Path = $env:TEMP
                     $Installer = "IntelDriverSupportAssistantInstaller.exe"
                     $URL = "https://downloadmirror.intel.com/29909/a08/Intel-Driver-and-Support-Assistant-Installer.exe"

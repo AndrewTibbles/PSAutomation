@@ -6,6 +6,7 @@ $clientSiteList = @{
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
+            "InstallSlack" = $true
             "InstallSupportAgent" = $true
         }
         "Site2" = @{
@@ -13,6 +14,7 @@ $clientSiteList = @{
             "InstallChrome" = $true
             "InstallAdobeReader" = $false
             "InstallOffice" = $false
+            "InstallSlack" = $false
             "InstallSupportAgent" = $true
         }
     }
@@ -22,6 +24,7 @@ $clientSiteList = @{
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
+            "InstallSlack" = $false
             "InstallSupportAgent" = $true
         }
         "Site2" = @{
@@ -29,6 +32,7 @@ $clientSiteList = @{
             "InstallChrome" = $true
             "InstallAdobeReader" = $false
             "InstallOffice" = $false
+            "InstallSlack" = $false
             "InstallSupportAgent" = $true
         }
     }
@@ -38,6 +42,7 @@ $clientSiteList = @{
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
+            "InstallSlack" = $false
             "InstallSupportAgent" = $true
         }
     }

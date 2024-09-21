@@ -22,6 +22,23 @@ if (-not $config -or -not $config.logFilePath -or -not $config.pcNameMapping) {
 # Define the log file path from the configuration
 $logFilePath = $config.logFilePath
 
+# Clear the log file if it already has content
+if (Test-Path $logFilePath) {
+    Clear-Content -Path $logFilePath
+} else {
+    New-Item -Path $logFilePath -ItemType File
+}
+
+# Function to clean up the log file
+function Clean-LogFile {
+    param (
+        [string]$filePath
+    )
+    $content = Get-Content -Path $filePath
+    $cleanedContent = $content | Where-Object { $_ -notmatch '^\s*[-\\|]\s*$' -and $_ -ne '' }
+    Set-Content -Path $filePath -Value $cleanedContent
+}
+
 # Convert pcNameMapping
 $pcNameMapping = . "$PSScriptRoot\Functions\Main\Convert-PcNameMapping.ps1" -pcNameMappingConfig $config.pcNameMapping
 
@@ -30,12 +47,16 @@ $header = @"
 ************************************************************************************
 **                           STARTING ILUX AUTOMATED CONFIGURATION                **
 ************************************************************************************
-The setup process has begun...
 "@
 Add-Content -Path $logFilePath -Value $header
+Log-Message -message "The setup process has begun..."
+
+# Clean the log file
+Clean-LogFile -filePath $logFilePath
 
 # Get current PC name
 $pcName = . "$PSScriptRoot\Functions\Main\Get-PcName.ps1"
+Log-Message -message "Current PC name: $pcName"
 
 # Find the closest match for the current PC name with validation
 try {
@@ -61,3 +82,5 @@ try {
     Log-Message -message "Error finding match: $_"
     throw "Error finding match"
 }
+# Clean the log file
+Clean-LogFile -filePath $logFilePath

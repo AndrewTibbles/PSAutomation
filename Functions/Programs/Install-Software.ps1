@@ -20,7 +20,7 @@ function Install-Software {
             [string]$softwareName
         )
 
-        $message = "`nInstalling $softwareName for $client $site"
+        $message = "Installing $softwareName for $client $site"
         Write-Output $message
         Log-Message -message $message -logFilePath $logFilePath
 
@@ -28,10 +28,12 @@ function Install-Software {
             try {
                 . $scriptPath -logFilePath $logFilePath
                 Log-Message -message "$softwareName installation completed for $client $site" -logFilePath $logFilePath
-            } catch {
+            }
+            catch {
                 Log-Message -message "Error during $softwareName installation: $_" -logFilePath $logFilePath
             }
-        } else {
+        }
+        else {
             Log-Message -message "$softwareName installation script not found at $scriptPath." -logFilePath $logFilePath
         }
     }
@@ -40,7 +42,11 @@ function Install-Software {
     $chromeInstallScriptPath = $config.ProgramPaths.Chrome
     $adobeInstallScriptPath = $config.ProgramPaths.AdobeReader
     $officeInstallScriptPath = $config.ProgramPaths.Office365
+    $slackInstallScriptPath = $config.ProgramPaths.Slack
     $supportAgentInstallScriptPath = $config.ProgramPaths.SupportAgent
+
+    # Update all installed packages
+    winget upgrade --all --include-unknown --accept-package-agreements
 
     # Install Chrome
     if ($siteInfo.InstallChrome) {
@@ -58,6 +64,11 @@ function Install-Software {
         Run-InstallScript -scriptPath $officeInstallScriptPath -softwareName "Office"
     }
 
+    # Install Slack
+    if ($siteInfo.InstallSlack) {
+        Run-InstallScript -scriptPath $slackInstallScriptPath -softwareName "Slack"
+    }
+
     # Install Support Agent
     if ($siteInfo.InstallSupportAgent) {
         Run-InstallScript -scriptPath $supportAgentInstallScriptPath -softwareName "Support Agent"
@@ -73,10 +84,12 @@ function Install-Software {
         try {
             Start-Process $agentPath -ArgumentList "/silent /install" -Wait
             Log-Message -message "Agent installation completed for $client $site" -logFilePath $logFilePath
-        } catch {
+        }
+        catch {
             Log-Message -message "Error during Agent installation: $_" -logFilePath $logFilePath
         }
-    } else {
+    }
+    else {
         Log-Message -message "Agent executable not found at $agentPath." -logFilePath $logFilePath
     }
 }

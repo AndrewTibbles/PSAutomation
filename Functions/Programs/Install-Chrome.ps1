@@ -26,15 +26,13 @@ function Install-Chrome {
         if ($exitCode -eq 0) {
             Add-Content -Path $logFilePath -Value "`Google Chrome installed successfully."
         } else {
-            $errorDetails = $installResult -join "`n"
             $errorDetails = $errorDetails -replace "(?m)^\s*(\d+%.*|-.*|\\.*)?$�", ""  # Remove percentage lines, lines with just a dash, lines with just a backslash, and empty lines
             Add-Content -Path $logFilePath -Value "Failed to install Google Chrome. Exit code: $exitCode"
             Add-Content -Path $logFilePath -Value "Error details:"
             Add-Content -Path $logFilePath -Value $errorDetails
-            Add-Content -Path $logFilePath -Value "`n"
         }
     } catch {
-        Add-Content -Path $logFilePath -Value "An error occurred during Google Chrome installation: $_ `n"
+        Add-Content -Path $logFilePath -Value "An error occurred during Google Chrome installation: $_ "
     }
 }
 
