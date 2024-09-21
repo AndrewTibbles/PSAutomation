@@ -8,7 +8,7 @@ if ([string]::IsNullOrEmpty($logFilePath)) {
 }
 
 # Function to check if a directory exists
-function Is-DirectoryExists {
+function Test-DirectoryExists {
     param (
         [string]$directoryPath
     )
@@ -30,7 +30,7 @@ function Install-SupportAgent {
     switch ($OEM) {
         "Dell Inc." {
             # Install Dell Support Assistant
-            if (-not (Is-DirectoryExists "C:\Program Files\Dell\SupportAssistAgent")) {
+            if (-not (Test-DirectoryExists "C:\Program Files\Dell\SupportAssistAgent")) {
                 Add-Content -Path $logFilePath -Value "Starting installation of Dell Support Assistant..."
                 $Path = $env:TEMP
                 $Installer = "SupportAssistInstaller.exe"
@@ -52,7 +52,7 @@ function Install-SupportAgent {
         }
         "HP" {
             # Install HP Support Assistant
-            if (-not (Is-DirectoryExists "C:\Program Files (x86)\HP\HP Support Framework")) {
+            if (-not (Test-DirectoryExists "C:\Program Files (x86)\HP\HP Support Framework")) {
                 Add-Content -Path $logFilePath -Value "Starting installation of HP Support Assistant..."
                 $Path = $env:TEMP
                 $Installer = "sp146042.exe"
@@ -74,7 +74,7 @@ function Install-SupportAgent {
         }
         "Lenovo" {
             # Install Lenovo System Update
-            if (-not (Is-DirectoryExists "C:\Program Files (x86)\Lenovo\System Update")) {
+            if (-not (Test-DirectoryExists "C:\Program Files (x86)\Lenovo\System Update")) {
                 Add-Content -Path $logFilePath -Value "Starting installation of Lenovo System Update..."
                 $Path = $env:TEMP
                 $Installer = "SystemUpdate.exe"
@@ -98,7 +98,7 @@ function Install-SupportAgent {
             # Check if the CPU is Intel
             if ($CPU -eq "GenuineIntel") {
                 # Install Intel Support Assistant
-                if (-not (Is-DirectoryExists "C:\Program Files (x86)\Intel\Intel(R) Driver and Support Assistant")) {
+                if (-not (Test-DirectoryExists "C:\Program Files (x86)\Intel\Intel(R) Driver and Support Assistant")) {
                     Add-Content -Path $logFilePath -Value "Starting installation of Intel Support Assistant..."
                     $Path = $env:TEMP
                     $Installer = "IntelDriverSupportAssistantInstaller.exe"

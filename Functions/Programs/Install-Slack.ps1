@@ -20,7 +20,7 @@ function Install-Slack {
 
     try {
         # Try to install Slack using winget
-        $installResult = winget install --id SlackTechnologies.Slack --scope machine --silent --accept-package-agreements --accept-source-agreements 2>&1
+        winget install --id SlackTechnologies.Slack --scope machine --silent --accept-package-agreements --accept-source-agreements 2>&1
         $exitCode = $LASTEXITCODE
 
         if ($exitCode -eq 0) {

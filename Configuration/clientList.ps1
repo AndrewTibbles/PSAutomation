@@ -1,8 +1,11 @@
+# Get the parent directory of the script's location
+$parentFolder = Split-Path -Path $PSScriptRoot -Parent
+
 # Define a nested hashtable to store client site agents and installation flags
 $clientSiteList = @{
     "Andrew" = @{
         "Cambridge" = @{
-            "Agent" = "$PSScriptRoot\Agents\Andrew\Cambridge\Agent.exe"
+            "Agent" = "$parentFolder\Agents\Andrew\Cambridge\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
@@ -10,7 +13,7 @@ $clientSiteList = @{
             "InstallSupportAgent" = $true
         }
         "Site2" = @{
-            "Agent" = "$PSScriptRoot\Agents\Client1\Site2\Agent.exe"
+            "Agent" = "$parentFolder\Agents\Client1\Site2\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $false
             "InstallOffice" = $false
@@ -20,7 +23,7 @@ $clientSiteList = @{
     }
     "Client2" = @{
         "Site1" = @{
-            "Agent" = "$PSScriptRoot\Agents\Client2\Site1\Agent.exe"
+            "Agent" = "$parentFolder\Agents\Client2\Site1\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true
@@ -28,7 +31,7 @@ $clientSiteList = @{
             "InstallSupportAgent" = $true
         }
         "Site2" = @{
-            "Agent" = "$PSScriptRoot\Agents\Client2\Site2\Agent.exe"
+            "Agent" = "$parentFolder\Agents\Client2\Site2\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $false
             "InstallOffice" = $false
@@ -38,7 +41,7 @@ $clientSiteList = @{
     }
     "ILUX" = @{
         "Cambridge" = @{
-            "Agent" = "$PSScriptRoot\Agents\ILUX\Cambridge\Agent.exe"
+            "Agent" = "$parentFolder\Agents\ILUX\Cambridge\Agent.exe"
             "InstallChrome" = $true
             "InstallAdobeReader" = $true
             "InstallOffice" = $true

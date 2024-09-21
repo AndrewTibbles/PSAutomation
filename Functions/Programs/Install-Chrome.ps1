@@ -20,7 +20,7 @@ function Install-Chrome {
 
     try {
         # Try to install Chrome using winget
-        $installResult = winget install --id Google.Chrome --silent --accept-package-agreements --accept-source-agreements 2>&1
+        winget install --id Google.Chrome --silent --accept-package-agreements --accept-source-agreements 2>&1
         $exitCode = $LASTEXITCODE
 
         if ($exitCode -eq 0) {

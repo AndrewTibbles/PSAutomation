@@ -14,7 +14,7 @@ function Install-Software {
     $siteInfo = $clientSiteList[$client][$site]
 
     # Helper function to log and run installation scripts
-    function Run-InstallScript {
+    function Invoke-InstallScript {
         param (
             [string]$scriptPath,
             [string]$softwareName
@@ -50,28 +50,28 @@ function Install-Software {
 
     # Install Chrome
     if ($siteInfo.InstallChrome) {
-        Run-InstallScript -scriptPath $chromeInstallScriptPath -softwareName "Chrome"
+        Invoke-InstallScript -scriptPath $chromeInstallScriptPath -softwareName "Chrome"
         Log-Message -message "$chromeInstallScriptPath"
     }
 
     # Install Adobe Reader
     if ($siteInfo.InstallAdobeReader) {
-        Run-InstallScript -scriptPath $adobeInstallScriptPath -softwareName "Adobe Reader"
+        Invoke-InstallScript -scriptPath $adobeInstallScriptPath -softwareName "Adobe Reader"
     }
 
     # Install Office
     if ($siteInfo.InstallOffice) {
-        Run-InstallScript -scriptPath $officeInstallScriptPath -softwareName "Office"
+        Invoke-InstallScript -scriptPath $officeInstallScriptPath -softwareName "Office"
     }
 
     # Install Slack
     if ($siteInfo.InstallSlack) {
-        Run-InstallScript -scriptPath $slackInstallScriptPath -softwareName "Slack"
+        Invoke-InstallScript -scriptPath $slackInstallScriptPath -softwareName "Slack"
     }
 
     # Install Support Agent
     if ($siteInfo.InstallSupportAgent) {
-        Run-InstallScript -scriptPath $supportAgentInstallScriptPath -softwareName "Support Agent"
+        Invoke-InstallScript -scriptPath $supportAgentInstallScriptPath -softwareName "Support Agent"
     }
 
     # Get the agent path from clientList.ps1

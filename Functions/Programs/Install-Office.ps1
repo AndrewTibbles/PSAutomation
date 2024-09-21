@@ -20,7 +20,7 @@ function Install-Office365 {
 
     try {
         # Try to install Office 365 using winget
-        $installResult = winget install --id Microsoft.Office --silent --accept-package-agreements --accept-source-agreements 2>&1
+        winget install --id Microsoft.Office --silent --accept-package-agreements --accept-source-agreements 2>&1
         $exitCode = $LASTEXITCODE
 
         if ($exitCode -eq 0) {

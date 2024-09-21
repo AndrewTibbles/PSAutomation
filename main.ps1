@@ -30,7 +30,7 @@ if (Test-Path $logFilePath) {
 }
 
 # Function to clean up the log file
-function Clean-LogFile {
+function Clear-LogFile {
     param (
         [string]$filePath
     )
@@ -51,8 +51,8 @@ $header = @"
 Add-Content -Path $logFilePath -Value $header
 Log-Message -message "The setup process has begun..."
 
-# Clean the log file
-Clean-LogFile -filePath $logFilePath
+# Clear the log file
+Clear-LogFile -filePath $logFilePath
 
 # Get current PC name
 $pcName = . "$PSScriptRoot\Functions\Main\Get-PcName.ps1"
@@ -83,4 +83,4 @@ try {
     throw "Error finding match"
 }
 # Clean the log file
-Clean-LogFile -filePath $logFilePath
+Clear-LogFile -filePath $logFilePath
