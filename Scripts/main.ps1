@@ -8,6 +8,7 @@ param (
 . "$PSScriptRoot\Functions\Main\Get-HardwareDetails.ps1"
 . "$PSScriptRoot\Functions\Programs\Install-Software.ps1"
 . "$PSScriptRoot\Configuration\clientList.ps1"
+#. "$PSScriptRoot\Functions\Main\Create_Admin.ps1"
 
 # Load configuration
 $config = . "$PSScriptRoot\Functions\Main\Load-Config.ps1" -configFilePath $configFilePath

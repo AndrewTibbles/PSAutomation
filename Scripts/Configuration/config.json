@@ -4,7 +4,8 @@
         "BJCAM": { "Client": "BoilerJuice", "Site": "Cambridge" },
         "ILUXCAM": { "Client": "ILUX", "Site": "Cambridge" },
         "B*-L*": { "Client": "CPEM", "Site": "London" },
-        "ANDREWS": { "Client": "Andrew", "Site": "Cambridge" }
+        "ANDREWS": { "Client": "Andrew", "Site": "Cambridge" },
+        "TMFLND": { "Client": "Tony Mcfadden", "Site": "Hatfield" }
     },
     "ProgramPaths": {
         "chrome": ".\\Scripts\\Functions\\Programs\\Install-Chrome.ps1",
